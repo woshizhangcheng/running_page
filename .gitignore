@@ -26,3 +26,9 @@ route.png
 route.svg
 
 .env
+
+# Data directories
+GPX_OUT/
+TCX_OUT/
+FIT_OUT/
+Workouts/
