@@ -62,33 +62,30 @@ const Header = () => {
 
   return (
     <>
-      <nav className="mx-auto mt-12 flex w-full min-w-max max-w-screen-2xl items-center justify-between pl-6 lg:px-16">
-        <div className="w-1/4">
-          <Link to={siteUrl}>
-            <picture>
-              <img className="h-16 w-16 rounded-full" alt="logo" src={logo} />
-            </picture>
-          </Link>
-        </div>
-        <div className="flex w-3/4 items-center justify-end text-right">
-          {navLinks.map((n, i) => (
-            <a
-              key={i}
-              href={n.url}
-              className="mr-3 text-lg lg:mr-4 lg:text-base"
-            >
-              {n.name}
-            </a>
-          ))}
-          <div className="ml-4 flex items-center space-x-2">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          <a className="text-2xl font-black tracking-tighter uppercase cursor-pointer" href="/">
+            <span className="text-white">RUN</span>
+            <span className="text-[#E31937]">.LOG</span>
+          </a>
+          <div className="flex items-center gap-6 text-sm font-bold tracking-wide">
+            {navLinks.map((n, i) => (
+              <a
+                key={i}
+                href={n.url}
+                className="text-white/70 hover:text-white transition-colors"
+              >
+                {n.name}
+              </a>
+            ))}
             <button
               type="button"
               onClick={handleToggle}
-              className={`${styles.themeButton} ${styles.themeButtonActive}`}
+              className="text-white/70 hover:text-white transition-colors"
               aria-label={`Switch to ${currentIcon.id} theme`}
               title={`Switch to ${currentIcon.id} theme`}
             >
-              <div className={styles.iconWrapper}>{currentIcon.svg}</div>
+              {currentIcon.svg}
             </button>
           </div>
         </div>

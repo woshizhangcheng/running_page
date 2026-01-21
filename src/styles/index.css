@@ -5,6 +5,20 @@
 @import 'tailwindcss';
 @import './mobile.css';
 
+/* 全局样式 */
+body {
+  background-color: black;
+  color: white;
+}
+
+.selection\:bg-red-500::selection {
+  background-color: rgb(239 68 68);
+}
+
+.selection\:text-white::selection {
+  color: white;
+}
+
 :root {
   /* global */
   --color-primary: var(--color-brand);

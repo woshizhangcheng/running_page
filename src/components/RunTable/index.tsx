@@ -93,7 +93,7 @@ const RunTable = ({
       <table className={styles.runTable} cellSpacing="0" cellPadding="0">
         <thead>
           <tr>
-            <th />
+            <th>事件</th>
             {Array.from(sortFunctions.keys()).map((k) => (
               <th key={k} onClick={handleClick}>
                 {k}

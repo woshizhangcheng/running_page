@@ -1,0 +1,16 @@
+.mapboxgl-ctrl-group {
+  background-color: #52525b !important; /* zinc-500 */
+  border: none !important;
+}
+
+.mapboxgl-ctrl-group button {
+  border-top: 1px solid #47474dff !important; /* zinc-600 */
+}
+
+.mapboxgl-ctrl-group button:first-child {
+  border-top: none !important;
+}
+
+.mapboxgl-ctrl-icon {
+  opacity: 1;
+}

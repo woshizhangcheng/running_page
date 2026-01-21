@@ -39,11 +39,11 @@ import {
 } from '@/utils/utils';
 import { RouteAnimator } from '@/utils/routeAnimation';
 import RunMarker from './RunMarker';
-import RunMapButtons from './RunMapButtons';
 import styles from './style.module.css';
 import { FeatureCollection } from 'geojson';
 import { RPGeometry } from '@/static/run_countries';
 import './mapbox.css';
+import './mapbox-custom.css';
 import LightsControl from '@/components/RunMap/LightsControl';
 import { useMapTheme, useThemeChangeCounter } from '@/hooks/useTheme';
 
@@ -372,7 +372,6 @@ const RunMap = ({
       cooperativeGestures={isTouchDevice()}
       mapboxAccessToken={MAPBOX_TOKEN}
     >
-      <RunMapButtons changeYear={changeYear} thisYear={thisYear} />
       <Source id="data" type="geojson" data={combinedGeoData}>
         <Layer
           id="province"

@@ -15,22 +15,22 @@ const getBasePath = () => {
 };
 
 const data: ISiteMetadataResult = {
-  siteTitle: 'Running Page',
-  siteUrl: 'https://yihong.run',
+  siteTitle: 'RUN.LOG',
+  siteUrl: `${getBasePath()}/`,
   logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTtc69JxHNcmN1ETpMUX4dozAgAN6iPjWalQ&usqp=CAU',
-  description: 'Personal site and blog',
+  description: 'Personal running page',
   navLinks: [
     {
-      name: 'Summary',
+      name: '首页',
+      url: `${getBasePath()}/`,
+    },
+    {
+      name: '轨迹墙',
       url: `${getBasePath()}/summary`,
     },
     {
-      name: 'Blog',
-      url: 'https://github.com/yihong0618/gitblog',
-    },
-    {
-      name: 'About',
-      url: 'https://github.com/yihong0618/running_page/blob/master/README-CN.md',
+      name: '热力图',
+      url: `${getBasePath()}/heatmap`,
     },
   ],
 };

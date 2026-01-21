@@ -7,6 +7,13 @@ import RunMap from '@/components/RunMap';
 import RunTable from '@/components/RunTable';
 import SVGStat from '@/components/SVGStat';
 import YearsStat from '@/components/YearsStat';
+import RunnerStat from '@/components/RunnerStat';
+import GoalCards from '@/components/GoalCards';
+import YearlyGoalCard from '@/components/GoalCards/YearlyGoalCard';
+import MonthlyGoalCard from '@/components/GoalCards/MonthlyGoalCard';
+import ActivityLogCard from '@/components/ActivityLogCard';
+import MonthlyCalendar from '@/components/MonthlyCalendar';
+import MonthlyDistanceChart from '@/components/MonthlyDistanceChart';
 import useActivities from '@/hooks/useActivities';
 import useSiteMetadata from '@/hooks/useSiteMetadata';
 import { useInterval } from '@/hooks/useInterval';
@@ -393,41 +400,52 @@ const Index = () => {
       <Helmet>
         <html lang="en" data-theme={theme} />
       </Helmet>
-      <div className="w-full lg:w-1/3">
-        <h1 className="my-12 mt-6 text-5xl font-extrabold italic">
-          <a href={siteUrl}>{siteTitle}</a>
-        </h1>
-        {(viewState.zoom ?? 0) <= 3 && IS_CHINESE ? (
-          <LocationStat
-            changeYear={changeYear}
-            changeCity={changeCity}
-            changeTitle={changeTitle}
-          />
-        ) : (
-          <YearsStat year={year} onClick={changeYear} />
-        )}
-      </div>
-      <div className="w-full lg:w-2/3" id="map-container">
-        <RunMap
-          title={title}
-          viewState={viewState}
-          geoData={animatedGeoData}
-          setViewState={setViewState}
-          changeYear={changeYear}
-          thisYear={year}
-          animationTrigger={animationTrigger}
-        />
-        {year === 'Total' ? (
-          <SVGStat />
-        ) : (
-          <RunTable
-            runs={runs}
-            locateActivity={locateActivity}
-            setActivity={setActivity}
-            runIndex={runIndex}
-            setRunIndex={setRunIndex}
-          />
-        )}
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          {/* Left 3 columns */}
+          <div className="lg:col-span-3 flex flex-col gap-8" style={{ minHeight: '1220px' }}>
+            {/* Runner, Yearly Goal, Monthly Goal */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <RunnerStat />
+              <YearlyGoalCard />
+              <MonthlyGoalCard />
+            </div>
+
+            {/* Activity Log */}
+            <ActivityLogCard
+              activities={activities}
+              runs={runs}
+              locateActivity={locateActivity}
+              setActivity={setActivity}
+              runIndex={runIndex}
+              setRunIndex={setRunIndex}
+              thisYear={year}
+              changeYear={changeYear}
+            />
+          </div>
+
+          {/* Right 2 columns */}
+          <div className="lg:col-span-2 flex flex-col gap-8">
+            {/* Map container */}
+            <div className="bg-zinc-900 rounded-2xl border border-zinc-800 overflow-hidden" style={{ height: '400px' }}>
+              <RunMap
+                title={title}
+                viewState={viewState}
+                geoData={animatedGeoData}
+                setViewState={setViewState}
+                changeYear={changeYear}
+                thisYear={year}
+                animationTrigger={animationTrigger}
+              />
+            </div>
+
+            {/* Monthly Calendar */}
+            <MonthlyCalendar activities={activities} />
+
+            {/* Monthly Distance Chart */}
+            <MonthlyDistanceChart />
+          </div>
+        </div>
       </div>
       {/* Enable Audiences in Vercel Analytics: https://vercel.com/docs/concepts/analytics/audiences/quickstart */}
       {import.meta.env.VERCEL && <Analytics />}

@@ -414,6 +414,16 @@ const filterYearRuns = (run: Activity, year: string) => {
   return false;
 };
 
+const filterMonthRuns = (runs: Activity[], month: number) => {
+  return runs.filter((run) => {
+    if (run && run.start_date_local) {
+      const runMonth = new Date(run.start_date_local).getMonth();
+      return runMonth === month;
+    }
+    return false;
+  });
+};
+
 const filterCityRuns = (run: Activity, city: string) => {
   if (run && run.location_country) {
     return run.location_country.includes(city);
@@ -504,6 +514,7 @@ export {
   geoJsonForMap,
   titleForRun,
   filterYearRuns,
+  filterMonthRuns,
   filterCityRuns,
   filterTitleRuns,
   filterAndSortRuns,

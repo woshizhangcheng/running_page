@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import useSiteMetadata from '@/hooks/useSiteMetadata';
 
 const Layout = ({ children }: React.PropsWithChildren) => {
@@ -20,8 +21,11 @@ const Layout = ({ children }: React.PropsWithChildren) => {
         />
       </Helmet>
       <Header />
-      <div className="mx-auto mb-16 max-w-screen-2xl p-4 lg:flex lg:p-16">
-        {children}
+      <div className="min-h-screen pt-20 flex flex-col">
+        <main className="flex-1">
+          {children}
+        </main>
+        <Footer />
       </div>
     </>
   );
