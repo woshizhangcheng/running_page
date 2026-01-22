@@ -210,3 +210,11 @@ hr {
     overflow-x: hidden;
   }
 }
+
+/* Custom 15-column grid for Track Wall */
+@layer utilities {
+  .grid-cols-15 {
+    display: grid;
+    grid-template-columns: repeat(15, minmax(0, 1fr));
+  }
+}
